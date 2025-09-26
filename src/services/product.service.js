@@ -9,3 +9,8 @@ export const getProductsService = async (params = {}) => {
   const { data } = await api.get("/products", { params });
   return data;
 };
+
+export const deleteProductService = async (id) => {
+  const { data } = await api.delete(`/products/${id}`);
+  return data;
+};
