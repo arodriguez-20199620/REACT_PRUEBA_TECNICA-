@@ -3,10 +3,12 @@ import toast from "react-hot-toast";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export const useCreateProduct = () => {
+  const queryClient = useQueryClient();
   return useMutation({
     mutationFn: createProductService,
     onSuccess: () => {
       toast.success("Product created successfully");
+      queryClient.invalidateQueries({ queryKey: ["products"] });
     },
     onError: (error) => {
       const errorMessage =
