@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { X } from "lucide-react";
+import { Button } from "./Button"; // Importa tu botón reutilizable
 
 export const Modal = ({
   isOpen = true,
@@ -26,6 +27,16 @@ export const Modal = ({
         ref={modalRef}
         className="w-full max-w-lg bg-white shadow-lg rounded-lg p-6 relative"
       >
+        {/* Botón de cerrar */}
+        <Button
+          variant="secondary"
+          size="sm"
+          className="!p-1 !absolute !top-2 !right-2"
+          onClick={onClose}
+          aria-label="Cerrar Modal"
+        >
+          <X className="w-5 h-5 text-gray-600" strokeWidth={3} />
+        </Button>
         <div className="flex items-center pb-3 border-b border-gray-300">
           <h3 className="text-slate-900 text-xl font-semibold flex-1">
             {title}
